@@ -16,6 +16,7 @@ def checkIfInteractionExists(day, temp):
                     interaction[5] += 1
                 break
     if not inInteraction:
+        temp.append(1)
         day.append(temp)
 
 with open('Realprimaryschool.csv', mode='r') as primarySchoolData:
@@ -26,11 +27,14 @@ with open('Realprimaryschool.csv', mode='r') as primarySchoolData:
             if (temp[1] in list(itertools.chain(*dayOne))):
                 checkIfInteractionExists(dayOne, temp)
             else:
+                temp.append(1)
                 dayOne.append(temp)
+                
         else:
             if (temp[1] in list(itertools.chain(*dayTwo))):
                 checkIfInteractionExists(dayTwo, temp)
             else:
+                temp.append(1)
                 dayTwo.append(temp)
     
 

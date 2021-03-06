@@ -64,4 +64,4 @@ def fillAttrs(node, layers, child, gradeAndClass):
 
 
 generateSchool(3,3,2)
-pprint(attrs)
+pprint(layers)
