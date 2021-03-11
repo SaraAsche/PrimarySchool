@@ -36,7 +36,17 @@ with open('Realprimaryschool.csv', mode='r') as primarySchoolData:
             else:
                 temp.append(1)
                 dayTwo.append(temp)
-    
+
+ID_1 = 0:
+ID_2 = 0:
+def newID(interaction, day):
+    if day == 2:
+        interaction[]
+    if day == 1:
+
+
+
+
 
 with open('dayOnePrimary.csv', 'w', newline='') as file:
     writer = csv.writer(file)
