@@ -9,7 +9,7 @@ import math
 #import community as community_louvain
 
 graph = nx.Graph()
-with open('dayTwoNewIndex.csv', mode='r') as primarySchoolData:
+with open('dayOneNewIndex.csv', mode='r') as primarySchoolData:
     
 
     for line in primarySchoolData:
@@ -31,7 +31,7 @@ A = nx.adjacency_matrix(graph, nodelist=a_list)
 
 A_M = A.todense()
 
-ax = sns.heatmap(A_M)
+ax = sns.heatmap(A_M, robust= True)
 #ax = sns.heatmap(A_M, robust = True)
 
 #plt.show()
