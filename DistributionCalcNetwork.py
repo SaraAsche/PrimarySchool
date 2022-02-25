@@ -278,7 +278,6 @@ def histDistributionLog(graph, logX, logY, output=False, day1=True, wait=False, 
     for line in items:
         data.append(line[1])
 
-    N = len(data)
     sorteddata = np.sort(data)
     print(sorteddata)
     d = toCumulative(sorteddata)
