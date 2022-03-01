@@ -18,7 +18,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, confusion_matrix
 from matplotlib.transforms import TransformedBbox
 from itertools import groupby
-import matplotx
 
 # import community as community_louvain
 
@@ -607,13 +606,13 @@ def pixelDist(graph, logY, logX, axis=None, output=False, old=False):
 
         if logX:
             axis.set_xscale("log")
-            axis.set_xlabel("log Degree")
+            axis.set_xlabel("log interactions")
         else:
             axis.set_xscale("linear")
             axis.set_xlabel("Frequency")
         if logY:
             axis.set_yscale("log")
-            axis.set_ylabel("Normalised log frequency")
+            axis.set_ylabel("Normalised log Frequency")
         else:
             axis.set_yscale("linear")
             axis.set_ylabel("Frequency")
@@ -627,10 +626,10 @@ def pixelDist(graph, logY, logX, axis=None, output=False, old=False):
             plt.ylabel("Frequency")
         if logX:
             plt.xscale("log")
-            plt.xlabel("log Degree")
+            plt.xlabel("log Interactions")
         else:
             plt.xscale("linear")
-            plt.xlabel("Degree")
+            plt.xlabel("Interactions")
         plt.show()
 
     # print(np.triu(A.todense(), k=1)) #
@@ -940,10 +939,11 @@ def pixel_dist_school(graph, output=False, twoInOne=False, graph2=None):
         handles, labels = axis[1, 1].get_legend_handles_labels()
         figure.legend(handles, labels, loc="upper center")
 
-        plt.savefig("pixelDist_day1_day2.png", bbox_inches="tight", dpi=150)
+        plt.savefig('./fig_master/pixel_dist_school.png',transparent=True, dpi=500)
         plt.show()
 
     # plt.savefig('pixelDistExperimental.png', bbox_inches='tight', dpi=150)
+    
     else:
         plt.show()
 
@@ -1176,7 +1176,4 @@ def plotAllR(graph):
 # pixel_dist_school(graph1, twoInOne=True, graph2=graph2)
 
 # linRegOnenode(graph1, 0)
-
-# outlierDist(graph1)
-plotAllR(graph1)
-# plotReg(graph1)
+pixel_dist_school(graph1, twoInOne=True, graph2=graph2)
