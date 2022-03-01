@@ -2,6 +2,8 @@ from cProfile import label
 from re import I
 import networkx as nx
 from networkx.algorithms.operators.binary import difference, disjoint_union, symmetric_difference
+from networkx.algorithms import community
+
 import numpy as np
 import pandas as pd
 import pprint
@@ -1171,6 +1173,35 @@ def plotAllR(graph):
         plotR(graph, node)
 
 
+def getClasses(G):
+
+    grades = nx.get_node_attributes(G, "klasse")
+
+    d = sorted(grades)
+
+    for node in grades:
+        grades = nx.get_node_attributes(G, "klasse")
+        classesDict = {}
+        for node in grades:
+            cl = grades[node]
+            if cl not in classesDict:
+                classesDict[cl] = {node}
+            else:
+                classesDict[cl].add(node)
+        classesList = []
+        for grade in classesDict.keys():
+            classesList.append(classesDict[grade])
+    return classesList
+
+
+def module(G):
+    communities = getClasses(G)
+
+    M = community.modularity(G, communities, "weight")
+
+    return M
+
+
 # school_hist_distribution(graph1, output=True, graph2=graph2)
 
 # pixel_dist_school(graph1, twoInOne=True, graph2=graph2)
@@ -1178,5 +1209,9 @@ def plotAllR(graph):
 # linRegOnenode(graph1, 0)
 
 # outlierDist(graph1)
-plotAllR(graph1)
+
 # plotReg(graph1)
+
+# print(getClasses(graph1))
+
+print(module(graph1))
