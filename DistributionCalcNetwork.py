@@ -1194,7 +1194,7 @@ def getClasses(G):
     return classesList
 
 
-def module(G):
+def modularity(G):
     communities = getClasses(G)
 
     M = community.modularity(G, communities, "weight")
@@ -1214,4 +1214,4 @@ def module(G):
 
 # print(getClasses(graph1))
 
-print(module(graph1))
+print(modularity(graph1))
