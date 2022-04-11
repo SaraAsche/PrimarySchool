@@ -1191,6 +1191,7 @@ def getClasses(G):
         classesList = []
         for grade in classesDict.keys():
             classesList.append(classesDict[grade])
+    print(classesList)
     return classesList
 
 
@@ -1200,6 +1201,45 @@ def modularity(G):
     M = community.modularity(G, communities, "weight")
 
     return M
+
+
+def general_analysis(graph):
+    print("-----------------------------------")
+    print(f"# of Nodes: {len(graph.nodes())}")
+    print("-----------------------------------")
+    print(f"# of edges: {len(graph.edges())}")
+    print("-----------------------------------")
+    degrees = []
+    for deg in graph.degree:
+        degrees.append(deg[1])
+    print(f"Average degree: {np.mean(degrees)}")
+    print("-----------------------------------")
+    print(f"Network diameter: {nx.diameter(graph)}")
+    print("-----------------------------------")
+    aver_short = nx.average_shortest_path_length(graph, weight="weight")
+    print(f"Average shortest path : {aver_short}")
+    print("-----------------------------------")
+    print(f"Average clustering: {nx.average_clustering(graph)}")
+    print("-----------------------------------")
+    weight_clust = nx.average_clustering(graph, weight="weight")
+    print(f"Weighted average clustering: {weight_clust}")
+    print("-----------------------------------")
+    print(f"Network density: {nx.density(graph)}")
+    print("-----------------------------------")
+    print(f"Heterogeneity in cytoscape")
+    print("-----------------------------------")
+    cent = []
+    for id, ce in nx.degree_centrality(graph).items():
+        cent.append(ce)
+    print(f"Average closeness centrality: {np.mean(cent)}")
+    print("-----------------------------------")
+    betw = []
+    for id, bet in nx.betweenness_centrality(graph).items():
+        betw.append(bet)
+    print(f"Average betweenness centrality: {np.mean(betw)}")
+    print("-----------------------------------")
+
+    # print(nx.degree_centrality(graph))
 
 
 # school_hist_distribution(graph1, output=True, graph2=graph2)
@@ -1213,5 +1253,10 @@ def modularity(G):
 # plotReg(graph1)
 
 # print(getClasses(graph1))
-
-print(modularity(graph1))
+# print(graph1.edges(0, data=True))
+# print(graph1[0][179])
+# print(graph1.nodes()[100])
+# l = []
+# for tup in graph2.degree(weight="weight"):
+#    l.append(tup[1])
+print(modularity(graph2))
