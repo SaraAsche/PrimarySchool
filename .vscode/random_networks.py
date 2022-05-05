@@ -81,7 +81,7 @@ def toCumulative(l):
     return cHist
 
 
-def histDistributionLog(graph, logX, logY, wait=False, label=None):
+def histDistributionLog(graph, logX, logY, wait=False, label=None, col="grey"):
     degs = {}
     for n in graph.nodes():
         deg = graph.degree(n)  # , weight="weight"
@@ -99,7 +99,7 @@ def histDistributionLog(graph, logX, logY, wait=False, label=None):
     d = toCumulative(sorteddata)
 
     if label:
-        plt.scatter(d.keys(), d.values(), label=label, alpha=0.5, s=20)
+        plt.scatter(d.keys(), d.values(), label=label, alpha=0.5, s=20, color=col)
         if logY:
             plt.yscale("log")
             plt.ylabel("Cumulative log frequency", size=13)
@@ -129,11 +129,11 @@ def main():
     WS = nx.watts_strogatz_graph(237, 50, 0.4)
     BA = nx.barabasi_albert_graph(237, 28)
 
-    # histDistributionLog(ER, True, True, wait=True, label="ER")
-    # histDistributionLog(WS, True, True, wait=True, label="WS")
-    # histDistributionLog(BA, True, True, wait=True, label="BA")
-    # histDistributionLog(graph1, True, True, wait=True, label="Day 1")
-    # histDistributionLog(graph2, True, True, wait=False, label="Day 2")
+    histDistributionLog(ER, True, True, wait=True, label="ER", col="darkgoldenrod")
+    histDistributionLog(WS, True, True, wait=True, label="WS", col="olivedrab")
+    histDistributionLog(BA, True, True, wait=True, label="BA", col="tan")
+    histDistributionLog(graph1, True, True, wait=True, label="Day 1", col="rosybrown")
+    histDistributionLog(graph2, True, True, wait=False, label="Day 2", col="cadetblue")
 
     print("day1")
     general_analysis(graph1)

@@ -1,8 +1,13 @@
-from cProfile import label
-from cmath import e
-import igraph
+"""temporal.py
+
+Temporal investigation of primary school data
+
+Author: Sara Johanne Asche
+Date: 05.05.2022
+File: temporal.py
+"""
+
 import numpy as np
-import pathpy as pp
 import pandas as pd
 import matplotlib.pyplot as plt
 import networkx as nx
@@ -11,7 +16,8 @@ from IPython.display import *
 from IPython.display import HTML
 
 
-def create_temp(filename):
+def create_temp(filename: str) -> pd.DataFrame:
+    """Creates a temporary file"""
     names = ["time", "sourceID", "targetID", "sourceGrade", "targetGrade"]
     days = pd.read_csv(filename, sep="\t", names=names)
 
@@ -24,11 +30,13 @@ def create_temp(filename):
     return day1, day2
 
 
-def toHour(x):
+def toHour(x) -> pd.DataFrame:
+    """Changes timesteps to hours from seconds"""
     return pd.Timestamp(x, unit="s").hour
 
 
-def plotDailyContacts(filename):
+def plotDailyContacts(filename: str) -> None:
+    """Plots the daily number of contact"""
     day1, day2 = create_temp(filename)
     dailyContactDays1 = {}
     dailyContactDays2 = {}
@@ -51,6 +59,7 @@ def plotDailyContacts(filename):
 
 
 def hourlyGraph(n, file, day):
+    """Plots contacts hour by hour"""
     day1, day2 = create_temp(file)
     if day:
         g = day1
@@ -176,11 +185,11 @@ def histDistWholeday(file, day, logX=False, logY=True):
             lab = str(i) + ":00"
         histDistributionLog(graph, logX, logY, wait=True, label=lab)
     plt.legend()
-    plt.savefig("CumulativeDistHourly_Day2.png", bbox_inches="tight", dpi=150)
+    plt.savefig("/fig_master/CumulativeDistHourly_Day2.png", bbox_inches="tight", dpi=150)
     plt.show()
 
 
-file = "Realprimaryschool.csv"
+file = "./data/Realprimaryschool.csv"
 # g = hourlyGraph(n=8, file="Realprimaryschool.csv", day=True)
 # histDistributionLog(g, False, True)
 
