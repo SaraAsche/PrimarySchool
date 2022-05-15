@@ -23,7 +23,7 @@ def checkIfInteractionExists(day, temp):
 
 
 def readPrimaryschool(klasse, day):
-    with open("Realprimaryschool.csv", mode="r") as primarySchoolData:
+    with open("./data/Realprimaryschool.csv", mode="r") as primarySchoolData:
         newLunch = []
         separation_points = []
 
@@ -53,7 +53,7 @@ def readPrimaryschool(klasse, day):
 
 
 def readPrimaryschool2(klasse, day):
-    with open("Realprimaryschool.csv", mode="r") as primarySchoolData:
+    with open("./data/Realprimaryschool.csv", mode="r") as primarySchoolData:
         newLunch = []
         separation_points = []
 
@@ -156,7 +156,7 @@ for i, klasse_degrees in enumerate(alle_klasse_degrees):
     if i == 3:
         continue
 
-    plt.scatter(Y, klasse_degrees, c=colors[i], label=f"{i+1}. class", alpha=0.8)
+    plt.scatter(Y, klasse_degrees, c=colors[i], label=f"Grade {i+1}", alpha=0.8)
 
 plt.ylabel("Number of interactions")
 plt.xlabel("Minutes since midnight")
@@ -167,12 +167,12 @@ for i, klasse_degrees in enumerate(alle_klasse_degrees):
     # if i == 3:
     #     continue
 
-    plt.plot(Y, klasse_degrees, c=colors[i], label=f"{i+1}. class", alpha=0.8)
+    plt.plot(Y, klasse_degrees, c=colors[i], label=f"Grade {i+1}", alpha=0.8)
 
 plt.legend()
 plt.ylabel("Number of interactions")
 plt.xlabel("Minutes since midnight")
-plt.savefig("Degree_distribution_day2", transparent=True, dpi=500)
+plt.savefig("./fig_master/Degree_distribution_day2", transparent=True, dpi=500)
 plt.show()
 
 # print(alle_klasse_degrees)

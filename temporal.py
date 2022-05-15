@@ -185,7 +185,7 @@ def histDistWholeday(file, day, logX=False, logY=True):
             lab = str(i) + ":00"
         histDistributionLog(graph, logX, logY, wait=True, label=lab)
     plt.legend()
-    plt.savefig("/fig_master/CumulativeDistHourly_Day2.png", bbox_inches="tight", dpi=150)
+    # plt.savefig("./data/fig_master/CumulativeDistHourly_Day2.png", bbox_inches="tight", dpi=150)
     plt.show()
 
 

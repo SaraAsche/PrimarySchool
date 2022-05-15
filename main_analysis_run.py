@@ -266,7 +266,7 @@ def getGradeChanges(graph: nx.Graph) -> list:
     return list(d.values()), list(d.keys())
 
 
-def test_table(A_M: np.Array, grade_list: list, class_name: list) -> pd.DataFrame:
+def test_table(A_M, grade_list: list, class_name: list) -> pd.DataFrame:
     """Function to return a dataframe of an adjacency matric for a given graph to aid makeheatmap function"""
     ids = [i for i in range(0, sum(grade_list) + 1)]
     seasons = []
@@ -356,7 +356,7 @@ def makeHeatMap(graph: nx.Graph, ax=None, output=False, wait=True):
     if not ax:
         ax = fig.add_subplot(111)
 
-    sns.heatmap(df, yticklabels=False, robust=True, ax=ax)
+    sns.heatmap(df, yticklabels=False, robust=False, ax=ax)
     labels = ["" for _ in ax.get_yticklabels()]
     ax.set_yticklabels(labels)
     ax.set_ylabel("")
@@ -1092,3 +1092,4 @@ def general_analysis(graph: nx.Graph) -> None:
         betw.append(bet)
     print(f"Average betweenness centrality: {np.mean(betw)}")
     print("-----------------------------------")
+

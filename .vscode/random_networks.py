@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 graph1 = nx.Graph()  # day1
 graph2 = nx.Graph()  # day2
 
-with open("dayOneNewIndex.csv", mode="r") as primarySchoolData:
+with open("./data/dayOneNewIndex.csv", mode="r") as primarySchoolData:
 
     for line in primarySchoolData:
         temp = list(map(lambda x: x.strip(), line.split(",")))
@@ -16,7 +16,7 @@ with open("dayOneNewIndex.csv", mode="r") as primarySchoolData:
         graph1.add_edge(int(temp[1]), int(temp[2]), weight=int(temp[5]))
         graph1.add_edge(int(temp[1]), int(temp[2]), weight=int(temp[5]))
 
-with open("dayTwoNewIndex.csv", mode="r") as primarySchoolData:
+with open("./data/dayTwoNewIndex.csv", mode="r") as primarySchoolData:
 
     for line in primarySchoolData:
         temp = list(map(lambda x: x.strip(), line.split(",")))
@@ -129,11 +129,11 @@ def main():
     WS = nx.watts_strogatz_graph(237, 50, 0.4)
     BA = nx.barabasi_albert_graph(237, 28)
 
-    histDistributionLog(ER, True, True, wait=True, label="ER", col="darkgoldenrod")
-    histDistributionLog(WS, True, True, wait=True, label="WS", col="olivedrab")
-    histDistributionLog(BA, True, True, wait=True, label="BA", col="tan")
-    histDistributionLog(graph1, True, True, wait=True, label="Day 1", col="rosybrown")
-    histDistributionLog(graph2, True, True, wait=False, label="Day 2", col="cadetblue")
+    # histDistributionLog(ER, True, True, wait=True, label="ER", col="darkgoldenrod")
+    # histDistributionLog(WS, True, True, wait=True, label="WS", col="olivedrab")
+    # histDistributionLog(BA, True, True, wait=True, label="BA", col="tan")
+    # histDistributionLog(graph1, True, True, wait=True, label="Day 1", col="rosybrown")
+    # histDistributionLog(graph2, True, True, wait=False, label="Day 2", col="cadetblue")
 
     print("day1")
     general_analysis(graph1)
@@ -146,5 +146,3 @@ def main():
     print("BA")
     general_analysis(BA)
 
-
-main()

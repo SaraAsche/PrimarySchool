@@ -298,7 +298,7 @@ def plot_deg(G, wait=True, label=None, col="rosybrown"):
         plt.show()
 
 
-def plotDegreeDegreeConnection(graph, weight):
+def plotDegreeDegreeConnection(graph: nx.Graph, weight: bool):
     """Plots assortativity between connected nodes with regard to degree
 
     Parameters
@@ -324,7 +324,7 @@ def plotDegreeDegreeConnection(graph, weight):
             xdata.append(graph.degree(j))
             ydata.append(graph.degree(i))
 
-    sns.jointplot(x=xdata, y=ydata, kind="hist", cbar=True, color="darkslategrey")  # hist,  cbar=True
+    sns.jointplot(x=xdata, y=ydata, kind="hist", cbar=True, color="royalblue")  # hist,  cbar=True
 
     plt.tight_layout()
 
@@ -504,3 +504,4 @@ def pixel__dist_layers():
     pixelDist(grade_grade, logX=True, logY=True, label="Grade", col="darkkhaki")
     pixelDist(day1, logX=True, logY=True, label="Whole", col="silver")
     pixelDist(class_class, logX=True, logY=True, label="Class", wait=False)
+
